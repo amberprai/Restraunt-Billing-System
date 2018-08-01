@@ -1,0 +1,186 @@
+#include<stdio.h>
+#include<conio.h>
+#include <dos.h>
+#include<string.h>
+int main()
+{
+int v,n,q,total=0,i;
+char items[30][30];
+int  bill[5];
+int item_count=0;
+int choice;
+float st,vat,famount;
+
+struct date d;
+struct  time t;
+clrscr();
+
+printf("*****************************************************************************");
+printf("\n|  \t \t \t WELCOME TO TAJ PALACE \t\t\t         |");
+printf("\n******************************************************************************\n");
+do
+{
+printf("\tWhat would You like to have \n 1. Veg\n 2.Non Veg\n");
+printf("\n Please Enter your Choice :");
+scanf("   %d",&v);
+printf("\n--------------------------------------\n");
+printf(" S.No \t  Item \t\t\t Rate \n");
+printf("--------------------------------------\n");
+	if(v==1)
+	{
+		printf("1. Veg Noodles \t \t\t40 \n");
+		printf("2. Veg Fried Rice\t\t50 \n");
+		printf("3. Aloo Parathe  \t\t20 \n");
+		printf("4. Roti Sabji  \t\t\t30 \n");
+		printf("5. Veg Momos   \t\t\t25 \n");
+		printf("6. Exit\n");
+		scanf("%d",&n);
+		printf("Enter No. Of Plates : ");
+		scanf("%d",&q);
+		if(n==1)
+		       {
+				    strcpy(items[item_count],"Veg Noodles\t\t 40");
+					bill[item_count]=40*q;
+					total=total+40*q;
+
+					++item_count;
+			}
+		else if(n==2)
+		{
+
+
+					strcpy(items[item_count],"Veg Fried Rice\t\t 50");
+					bill[item_count]=50*q;
+					total=total+50*q;
+
+					++item_count;
+			}
+		else if(n==3)
+			{
+				strcpy(items[item_count],"Aloo Paratha\t\t\t 20");
+					bill[item_count]=20*q;
+					total=total+20*q;
+
+					++item_count;
+
+
+			}
+		else if(n==4)
+			{
+				strcpy(items[item_count],"Roti Sabji\t\t\t 30 ");
+				bill[item_count]=30*q;
+				total=total+30*q;
+
+					++item_count;
+			}
+		else if(n==5)
+			{
+			  strcpy(items[item_count],"Momos \t\t\t 25");
+					bill[item_count]=25*q;
+					total=total+25*q;
+
+
+					++item_count;
+			}
+		else if(n==6)
+			exit(0);
+
+		else
+		printf("OOPS!!! Wrong Input  \a \a \a \n");
+
+	   }
+ else if(v==2)
+	  {
+		printf("1. Chicken 65 %s\t\t\t90 \n");
+		printf("2. Chicken Manchurian \t\t100 \n");
+		printf("3. Chicken Kabab\t\t80 \n");
+		printf("4. Fish Curry \t\t\t55 \n");
+		printf("5. Bread Omlett(2 pcs)\t\t20 \n");
+		printf("6. Exit\n");
+		printf("\n  Tell  Us Your Dish  : ");
+		scanf("%d",&n);
+		printf("\n Enter No. Of Plates : ");
+		scanf("%d ",&q);
+		if(n==1)
+		{
+			   strcpy(items[item_count],"Chicken 65\t     90	");
+			   bill[item_count]=90*q;
+			   total=total+90*q;
+
+			   ++item_count;
+			}
+
+		else if(n==2)
+		{
+			     strcpy(items[item_count],"Chicken Manchurian\t100	");
+			     bill[item_count]=100*q;
+			     total=total+100*q;
+
+			     ++item_count;
+			}
+		else if(n==3)
+		{
+			       strcpy(items[item_count],"Kabab\t\t\t 80");
+			       bill[item_count]=80*q;
+			       total=total+80*q;
+
+			       ++item_count;
+			}
+		else if(n==4)
+		{
+				 strcpy(items[item_count],"Fish Curry\t\t\t 55");
+				 bill[item_count]=55*q;
+				 total=total+55*q;
+
+					++item_count;
+			}
+
+		else if(n==5)
+		{
+				   strcpy(items[item_count],"Bread Omlette \t\t 20");
+				   bill[item_count]=20*q;
+				   total=total+20*q;
+
+					++item_count;
+			}
+		else if(n==6)
+			exit(0);
+		else
+		printf("OOPS!!!! Wrong Input \a\a\a \n");
+	  }
+ else
+	  printf("OOPS!!!! Wrong Input \a\a\a \n");
+
+    printf("\n\t Do you want to order Again ? \n   1 for Yes \n   0 for No \n ");
+    printf("\n Enter Your Choice : ");
+    scanf("%d",&choice);
+ }while(choice==1);
+printf("\n\n\t\t     Taj Palace \n \t\t    Hi-Tech City \n \t\t     Hyderabad\n");
+   getdate(&d);
+printf(" %d/%d/%d\n", d.da_day,d.da_mon,d.da_year);
+   gettime(&t);
+printf(" %2d:%02d:%02d\n",t.ti_hour, t.ti_min, t.ti_sec);
+printf("-----------------------------------------------------------------\n");
+printf("S.no\t Items\t\t      Rate     Quantity     Amount\n");
+printf("-----------------------------------------------------------------\n");
+ for(i=0;i<item_count;i++)
+ printf("%d       %s     %d    \t%d\n",i+1,items[i],q,bill[i]);
+ printf("\n \t Total\t\t\t\t\t=%d\n",total);
+
+st=0.14*total;
+vat=0.06*total;
+famount=st+vat+total;
+printf("-----------------------------------------------------------------\n");
+printf("\n\t\t\t Service Tax[14]  : %f",st);
+printf("\n\t\t\t VAT[6]           : %f",vat);
+printf("\n \t \t     Final Amount Payable : %f \n",famount);
+printf("\n\n\t\t Payment done through Cash\n");
+printf("\t\n\t        $$$ Thank you for Visiting $$$ \n");
+printf("\t\n\t       $$$ Good Service is our Aim $$$ \n");
+printf("\t\n    *for any feedbacks mail us at feedback@tajpalace.com *\n");
+printf("\a \a \a \a ");
+
+getch();
+return 0;
+}
+
